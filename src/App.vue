@@ -1,29 +1,12 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import SearchForm from './components/SearchForm.vue'
+import { RouterView } from 'vue-router'
+
+import HeaderNav from './components/HeaderNav.vue'
 </script>
 
 <template>
-  <main class="container">
-    <header>
-      <nav class="nav">
-        <div class="logo">
-          <hgroup>
-            <RouterLink to="/"><h1>🍿 Movizz</h1></RouterLink>
-            <h2>keep a watch list</h2>
-          </hgroup>
-        </div>
-
-        <ul>
-          <li>
-            <SearchForm />
-          </li>
-          <li>
-            <RouterLink to="/watchlist" role="button">❤️ My watch list</RouterLink>
-          </li>
-        </ul>
-      </nav>
-    </header>
+  <main class="mx-auto max-w-screen-xl px-4 py-8 lg:py-12 space-y-8 lg:space-y-12">
+    <HeaderNav />
 
     <RouterView />
   </main>
