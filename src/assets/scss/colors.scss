@@ -1,0 +1,39 @@
+
+:root{
+    --blue: #303284;
+    --purple:rgb(147 30 140);
+}
+$pink: #f8bcbc;
+$background:#001220;
+$dark-blue: #293264;
+$dark-white: #f5f7fb;
+$light-blue: #d6dbf5;
+$lighter-blue: #dbdef0;
+$light-yellow: #fffad1;
+
+$purple: rgb(147 30 140);
+$cyan: #00ffb8;
+$grey: #ccc;
+$grey-dark: #444;
+$grey-darker: #333;
+$beige:#FFF9E4;
+$dark:#121212;
+$green:#43DD65;
+$green-dark:#15451F;
+$green-darker:#0D2B14;
+$yellow:#F2CA3C;
+$yellow-dark:#594A16;
+$yellow-darker:#403510;
+$red:#F03986;
+$red-dark:#571530;
+$red-darker:#3D0F22;
+$blue:#3C9BF2;
+$blue-dark:#163959;
+$blue-darker:#102940;
+
+[data-theme=dark] {
+    --primary: var(--purple);
+    --primary-hover: var(--blue);
+    --form-element-border-color: #374956;
+    --form-element-background-color: #11191f;
+  }

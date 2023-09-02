@@ -13,10 +13,7 @@ import { RouterLink } from 'vue-router'
         <a class="btn btn-dark normal-case text-xl"> <IconLogo /> </a>
       </div>
       <div class="flex-none gap-2">
-        <div class="form-control">
-          <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
-        </div>
-
+        <SearchForm />
         <ul class="menu bg-base-200 lg:menu-horizontal rounded-box">
           <li>
             <RouterLink aria-label="homepage" to="/">
@@ -47,9 +44,7 @@ import { RouterLink } from 'vue-router'
       </div>
 
       <ul>
-        <li>
-          <SearchForm />
-        </li>
+        <li></li>
         <li>
           <RouterLink to="/watchlist" role="button">❤️ My watch list</RouterLink>
         </li>

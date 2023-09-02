@@ -68,16 +68,18 @@ onMounted(() => {
 })
 </script>
 <template>
-  <form method="post" action="#" class="search-form">
-    <input-field
-      unique="search"
-      label="Search"
-      class="search-input"
-      placeholder="Search for a movie"
-      v-on:updated="search = $event"
-    ></input-field>
-    <div class="submit-wrapper">
-      <button @click.prevent="handleSearch(search)">Search</button>
-    </div>
-  </form>
+  <div class="form-control">
+    <form method="post" action="#" class="search-form">
+      <input-field
+        unique="search"
+        label="Search"
+        class="input input-bordered w-24 md:w-auto"
+        placeholder="Search for a movie"
+        v-on:updated="search = $event"
+      />
+      <div class="submit-wrapper">
+        <button @click.prevent="handleSearch(search)">Search</button>
+      </div>
+    </form>
+  </div>
 </template>
