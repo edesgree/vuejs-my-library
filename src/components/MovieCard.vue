@@ -14,6 +14,9 @@ const store = useMoviesStore()
 <template>
   <div class="movie">
     <div class="movie-poster">
+      <RouterLink :to="{ name: 'movie', params: { id: movie.imdbID } }">
+        coucou<span class="sr-only">View details for {{ movie.Title }}</span>
+      </RouterLink>
       <span v-if="!movie.selected"></span>
       <div class="bookmark-action">
         <div v-if="type == 'search'">
