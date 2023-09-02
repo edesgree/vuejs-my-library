@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import SearchForm from './components/SearchForm.vue'
 </script>
 
 <template>
@@ -16,7 +16,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
         <ul>
           <li>
-            <Search></Search>
+            <SearchForm />
           </li>
           <li>
             <RouterLink to="/watchlist" role="button">❤️ My watch list</RouterLink>

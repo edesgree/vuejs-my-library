@@ -1,12 +1,12 @@
 <script setup>
-import { useMoviesStore } from '../store';
-import iconPlaceholder from '../assets/img/icon-film.svg';
+import { useMoviesStore } from '../stores'
+import iconPlaceholder from '../assets/img/icon-film.svg'
 
 defineProps({
   type: String,
   movie: Object
-});
-const store = useMoviesStore();
+})
+const store = useMoviesStore()
 </script>
 
 <template>

@@ -1,9 +1,9 @@
 <script setup>
-import { useMoviesStore } from '../store';
+import { useMoviesStore } from '../stores'
 
-import MovieCard from '../components/MovieCard.vue';
+import MovieCard from '../components/MovieCard.vue'
 
-const store = useMoviesStore();
+const store = useMoviesStore()
 </script>
 <template>
   <ul v-if="store.moviesResult" class="movies-list" :aria-busy="store.loading">
