@@ -20,7 +20,8 @@ module.exports = {
           info: '#5eead4',
           success: '#36D399',
           warning: '#FBBD23',
-          error: '#F87272'
+          error: '#F87272',
+          'base-100': '#2A303C'
         }
       }
     ],
