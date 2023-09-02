@@ -31,12 +31,21 @@ export const useMoviesStore = defineStore('movies', {
       const index = this.myWatchList.findIndex((m) => m.imdbID === movie.imdbID)
       this.myWatchList.splice(index, 1)
       localStorage.setItem('watchlist', JSON.stringify(this.myWatchList))
+      console.log('movie removed', movie)
+
+      // set selected to false
+      const currentSelection = this.moviesResult.find((m) => m.imdbID === movie.imdbID)
+      console.log('currentSelection', currentSelection)
+      currentSelection.selected = false
     },
     markAsWatched(movie) {
       const currentSelection = this.myWatchList.find((m) => m.imdbID === movie.imdbID)
       currentSelection.isWatched = true
       localStorage.setItem('watchlist', JSON.stringify(this.myWatchList))
       console.log('movie marked as watched', movie.isWatched)
+    },
+    test(movie) {
+      console.log('test', movie)
     }
   }
 })
