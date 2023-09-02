@@ -4,23 +4,29 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <main class="container">
+    <header>
+      <nav class="nav">
+        <div class="logo">
+          <hgroup>
+            <RouterLink to="/"><h1>🍿 Movizz</h1></RouterLink>
+            <h2>keep a watch list</h2>
+          </hgroup>
+        </div>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-      <h1 class="text-3xl font-bold underline mb-10">Hello Vue!</h1>
-      <button class="btn btn-primary">One</button>
-      <button class="btn btn-secondary">Two</button>
-      <button class="btn btn-accent btn-outline">Three</button>
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <ul>
+          <li>
+            <Search></Search>
+          </li>
+          <li>
+            <RouterLink to="/watchlist" role="button">❤️ My watch list</RouterLink>
+          </li>
+        </ul>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <RouterView />
+    <RouterView />
+  </main>
 </template>
 
 <style scoped>
