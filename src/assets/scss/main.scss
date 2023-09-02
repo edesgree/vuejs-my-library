@@ -26,6 +26,13 @@ body {
       color:var(--primary-inverse);
       margin: 0;
     }
+    .logo-wrap{
+      display: flex;
+      flex-direction: row;
+      .subtitle{
+        margin-left: 60px;
+      }
+    }
     .logo{
       align-items: center;
       color:$dark-white;
@@ -48,6 +55,18 @@ body {
         @include mobile{
           flex-direction: column;
         }
+      }
+    }
+    .menu{
+       a.router-link-exact-active {
+        color: var(--color-text);
+        svg path{
+          fill: hsl(var(--p));
+        }
+      }
+      
+       a.router-link-exact-active:hover {
+        background-color: transparent;
       }
     }
   }
@@ -104,16 +123,12 @@ body {
   p {
     text-align: center;
   }
-  .btn-sm{
-    font-size: .75rem;
-    margin: 0;
-    padding: 0.5em;
-  }
+
   
   .movies-list {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 30px;
+    grid-template-columns: 1fr 1fr;
     list-style-type: none;
     margin-bottom: 40px;
     padding-left: 0;
@@ -131,6 +146,14 @@ body {
       gap:30px;
       justify-content: space-between;
       padding-bottom: 30px;
+      .movie-poster{
+        position: relative; 
+        .bookmark-action{
+          position: absolute;
+          right: 10px;
+          top: 10px;
+        }
+      }
       .movie-details {
         .movie-title {
           align-items: center;
@@ -148,10 +171,14 @@ body {
           }
         }
         .movie-info{
-          align-items: center;
-          display: flex;
-          gap: 20px;
+          
           margin-bottom: 20px;
+          .movie-info-detail{
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+          }
           .buttons-group{
             display: flex;
             gap: 10px;
@@ -241,5 +268,17 @@ body {
 }
 
 .poster{
-  max-width: 150px;
+  border-radius: 15px;
+  max-width: 170px;
 }
+
+//buttons
+.btn-bookmark{
+  &.active,&:hover{
+    background-color: transparent;
+    svg path{
+      fill: hsl(var(--p));
+    }
+  }
+}
+
