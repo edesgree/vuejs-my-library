@@ -43,9 +43,6 @@ export const useMoviesStore = defineStore('movies', {
       currentSelection.isWatched = true
       localStorage.setItem('watchlist', JSON.stringify(this.myWatchList))
       console.log('movie marked as watched', movie.isWatched)
-    },
-    test(movie) {
-      console.log('test', movie)
     }
   }
 })

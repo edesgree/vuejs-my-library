@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-
+import MovieDetail from '../views/MovieDetail.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -21,7 +21,7 @@ const router = createRouter({
       path: '/movie/:id',
       name: 'movie',
       props: true,
-      component: () => import('../views/MovieDetail.vue')
+      component: MovieDetail
     }
   ]
 })

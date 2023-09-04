@@ -81,11 +81,14 @@ const store = useMoviesStore()
         </div>
       </div>
       <div class="movie-desc">{{ movie.Plot }}</div>
-      <RouterLink class="btn btn-xs" :to="{ name: 'movie', params: { id: movie.imdbID } }">
-        more info<span class="sr-only">View details for {{ movie.Title }}</span>
-      </RouterLink>
 
-      <RouterLink class="btn btn-xs" :to="{ name: 'movie', params: { id: movie.imdbID } }">
+      <RouterLink
+        class="btn btn-xs"
+        :to="{
+          name: 'movie',
+          params: { id: movie.imdbID }
+        }"
+      >
         more info 2
       </RouterLink>
     </div>
