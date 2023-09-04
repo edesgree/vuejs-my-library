@@ -1,10 +1,10 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { fetchMovieById } from '../api'
+import { fetchMovieByIdTMDB } from '../api'
 import RatingScore from '../components/RatingScore.vue'
 import { useMoviesStore } from '../stores'
-
+import MovieImage from '../components/MovieImage.vue'
 const store = useMoviesStore()
 const route = useRoute()
 const movieId = ref(route.params.id)
@@ -15,7 +15,7 @@ onMounted(async () => {
   // Fetch movie details using the movie ID from the route
   store.loading = true
   try {
-    const movieData = await fetchMovieById(movieId.value)
+    const movieData = await fetchMovieByIdTMDB(movieId.value)
     console.log(store.loading)
     // Check for a specific error condition in the API response
     if (movieData.Error) {
@@ -41,7 +41,9 @@ onMounted(async () => {
 
   <div class="movie-detail" v-if="movie">
     <div class="card card-side bg-base-100 shadow-xl">
-      <figure><img :src="movie.Poster" :alt="movie.Title" /></figure>
+      <figure>
+        <MovieImage :path="movie.poster_path" :title="movie.title" />
+      </figure>
       <div class="card-body">
         <h1 class="card-title">{{ movie.Title }}</h1>
         <RatingScore :score="movie.imdbRating" />

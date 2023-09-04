@@ -14,7 +14,10 @@ const TMDB_API_OPTIONS = {
 }
 export async function fetchMoviesTMDB(query) {
   try {
-    const response = await axios.get(`${TMDB_API_URL}search/movie?query=${query}`, TMDB_API_OPTIONS)
+    const response = await axios.get(
+      `${TMDB_API_URL}search/movie?include_adult=true&query=${query}`,
+      TMDB_API_OPTIONS
+    )
     const data = response.data
     console.log('search result TMDB', data)
     return data || []
@@ -60,6 +63,7 @@ export async function fetchMovieByIdTMDB(id) {
   try {
     const response = await axios.get(`${TMDB_API_URL}movie/${id}`, TMDB_API_OPTIONS)
     const data = response.data
+    console.log('(TMDB)  fetching movie by Id', data)
     return data || []
   } catch (err) {
     console.error('(TMDB) Error fetching movie by Id:', err)

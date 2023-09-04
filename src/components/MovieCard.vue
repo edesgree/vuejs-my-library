@@ -1,15 +1,15 @@
 <script setup>
 import { useMoviesStore } from '../stores'
-import iconPlaceholder from '../assets/img/icon-film.svg'
+
 import IconBookmark from './icons/IconBookmark.vue'
 import IconBookmarkFull from './icons/IconBookmarkFull.vue'
 import RatingScore from './RatingScore.vue'
+import MovieImage from './MovieImage.vue'
 defineProps({
   type: String,
   movie: Object
 })
 const store = useMoviesStore()
-console.log('poster URL', store.posterURL)
 </script>
 
 <template>
@@ -60,18 +60,14 @@ console.log('poster URL', store.posterURL)
         </div>
       </div>
 
-      <img
-        :src="movie.poster_path === null ? iconPlaceholder : store.posterURL + movie.poster_path"
-        :alt="movie.Title"
-        class="poster"
-      />
+      <MovieImage :path="movie.poster_path" :title="movie.title" />
     </div>
 
     <div class="movie-details">
       <div class="movie-title">
-        <h2 class="movie-title-text">{{ movie.Title }}{{ movie.plot }}</h2>
+        <h2 class="movie-title-text">{{ movie.title }}</h2>
         <div class="movie-title-rating">
-          <RatingScore :score="movie.imdbRating" />
+          <RatingScore :score="movie.vote_average" />
         </div>
       </div>
       <div class="movie-info">
@@ -81,7 +77,7 @@ console.log('poster URL', store.posterURL)
           <span>{{ movie.Genre }}</span>
         </div>
       </div>
-      <div class="movie-desc">{{ movie.Plot }}</div>
+      <div class="movie-desc">{{ movie.overview }}</div>
 
       <RouterLink
         class="btn btn-xs"
