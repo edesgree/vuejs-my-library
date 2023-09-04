@@ -10,7 +10,10 @@ import { RouterLink } from 'vue-router'
   <header class="bg-base-100">
     <div class="navbar">
       <div class="flex-1 logo-wrap">
-        <a class="btn btn-dark normal-case text-xl"> <IconLogo /> </a>
+        <RouterLink class="btn btn-dark normal-case text-xl" aria-label="homepage" to="/">
+          <IconLogo />
+        </RouterLink>
+
         <p class="subtitle">keep a watch list</p>
       </div>
       <div class="flex-none gap-2">

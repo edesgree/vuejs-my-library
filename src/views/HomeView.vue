@@ -1,26 +1,19 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
-import DummyText from '../components/DummyText.vue'
-</script>
+import { useMoviesStore } from '../stores'
 
+import MovieCard from '../components/MovieCard.vue'
+import DummyText from '../components/DummyText.vue'
+
+const store = useMoviesStore()
+</script>
 <template>
-  <main>
-    <DummyText />
-    <div class="hero min-h-screen bg-base-200">
-      <div class="hero-content flex-col lg:flex-row-reverse">
-        <img
-          src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
-          class="max-w-sm rounded-lg shadow-2xl"
-        />
-        <div>
-          <h1 class="text-5xl font-bold">Box Office News!</h1>
-          <p class="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi
-            exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.
-          </p>
-          <button class="btn btn-primary">Get Started</button>
-        </div>
-      </div>
-    </div>
-  </main>
+  <span v-if="store.loading" class="loading loading-spinner text-primary"></span>
+
+  <ul v-if="store.moviesResult" class="movies-list" :aria-busy="store.loading">
+    <li v-for="movie in store.moviesResult" :key="movie.imdbID">
+      <movie-card :movie="movie" type="search" />
+    </li>
+  </ul>
+  <p>{{ store.searchError }}</p>
+  <DummyText />
 </template>
