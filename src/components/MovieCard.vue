@@ -77,7 +77,7 @@ const store = useMoviesStore()
           <span>{{ movie.Genre }}</span>
         </div>
       </div>
-      <div class="movie-desc">{{ movie.overview }}</div>
+      <div class="movie-desc">{{ movie.tagline }}</div>
 
       <RouterLink
         class="btn btn-xs"

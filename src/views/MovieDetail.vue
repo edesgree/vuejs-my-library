@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { fetchMovieByIdTMDB } from '../api'
 import RatingScore from '../components/RatingScore.vue'
@@ -33,6 +33,7 @@ onMounted(async () => {
     store.loading = false
   }
 })
+const releaseDate = computed(() => movie.value.release_date.substring(0, 4))
 </script>
 <template>
   <span v-if="store.loading" class="loading loading-spinner text-primary"></span>
@@ -45,12 +46,12 @@ onMounted(async () => {
         <MovieImage :path="movie.poster_path" :title="movie.title" />
       </figure>
       <div class="card-body">
-        <h1 class="card-title">{{ movie.Title }}</h1>
-        <RatingScore :score="movie.imdbRating" />
+        <h1 class="card-title">{{ movie.title }}</h1>
+        <RatingScore :score="movie.vote_average" />
         <div class="flex gap-2">
           <div>
             <p><strong>Date</strong></p>
-            <span>{{ movie.Released }}</span>
+            <span>{{ releaseDate }}</span>
           </div>
           <div>
             <p><strong>Genre</strong></p>
@@ -75,4 +76,5 @@ onMounted(async () => {
       <h1></h1>
     </div>
   </div>
+  <div v-else>Loading...</div>
 </template>
