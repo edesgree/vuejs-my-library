@@ -30,10 +30,3 @@ $red-darker:#3D0F22;
 $blue:#3C9BF2;
 $blue-dark:#163959;
 $blue-darker:#102940;
-
-[data-theme=dark] {
-    --primary: var(--purple);
-    --primary-hover: var(--blue);
-    --form-element-border-color: #374956;
-    --form-element-background-color: #11191f;
-  }

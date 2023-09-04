@@ -38,17 +38,39 @@ onMounted(async () => {
   <span v-if="store.loading" class="loading loading-spinner text-primary"></span>
   <div>movie {{ $route.params.id }}</div>
   <p v-if="error">error: {{ error }}</p>
+
   <div class="movie-detail" v-if="movie">
-    <img :src="movie.Poster" :alt="movie.Title" />
-    <h1>{{ movie.Title }}</h1>
-    <RatingScore :score="movie.imdbRating" />
-    <div class="movie-info">
-      <div class="movie-info-detail">
-        <span>{{ movie.Runtime }}</span>
-        <span>{{ movie.Year }}</span>
-        <span>{{ movie.Genre }}</span>
+    <div class="card card-side bg-base-100 shadow-xl">
+      <figure><img :src="movie.Poster" :alt="movie.Title" /></figure>
+      <div class="card-body">
+        <h1 class="card-title">{{ movie.Title }}</h1>
+        <RatingScore :score="movie.imdbRating" />
+        <div class="flex gap-2">
+          <div>
+            <p><strong>Date</strong></p>
+            <span>{{ movie.Released }}</span>
+          </div>
+          <div>
+            <p><strong>Genre</strong></p>
+            <span>{{ movie.Genre }}</span>
+          </div>
+        </div>
+
+        <div class="movie-info">
+          <div class="movie-info-detail">
+            <span>{{ movie.Runtime }}</span>
+            <span>{{ movie.Year }}</span>
+          </div>
+        </div>
+        <p>{{ movie.Plot }}</p>
+        <div class="card-actions justify-end">
+          <button class="btn btn-sm btn-primary">Add to my list</button>
+        </div>
       </div>
     </div>
-    <p>{{ movie.Plot }}</p>
+    <div class="flex-initial"></div>
+    <div class="flex-auto prose">
+      <h1></h1>
+    </div>
   </div>
 </template>

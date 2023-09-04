@@ -32,9 +32,9 @@ const store = useMoviesStore()
             <IconBookmarkFull />
           </button>
         </div>
-        <div class="buttons-group" v-else>
+        <div class="join" v-else>
           <button
-            class="btn-sm"
+            class="join-item btn btn-secondary btn-outline btn-sm"
             data-tooltip="seen it!"
             v-if="movie.isWatched && type == 'watchlist'"
             disabled
@@ -44,13 +44,13 @@ const store = useMoviesStore()
           <button
             v-else
             data-tooltip="I have watched it!"
-            class="btn-sm"
+            class="join-item btn btn-secondary btn-outline btn-sm"
             @click.prevent="store.markAsWatched(movie)"
           >
             👀
           </button>
           <button
-            class="btn-sm"
+            class="join-item btn btn-error btn-outline btn-sm"
             data-tooltip="Remove it!"
             @click.prevent="store.removeFromWatchlist(movie)"
           >

@@ -1,5 +1,5 @@
 
-  
+
 body {
   background: $background url('#{$get-path-to-assets}blob.svg') no-repeat center center;
     background-size: cover;
@@ -108,7 +108,6 @@ body {
     min-height: 250px;
     min-width: 250px;
     padding: 20px;
-    text-align: center;
 
   }
   /*Animate width to 100%*/
@@ -120,9 +119,7 @@ body {
       max-width: 650px;
     }
   }
-  p {
-    text-align: center;
-  }
+
 
   
   .movies-list {
@@ -227,46 +224,8 @@ body {
   }
 
   
-  //loading animation
-.spinner {
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-
-  .line {
-    animation: 2156ms spinner-arc ease-in-out infinite,
-      1829ms spinner-rotate linear infinite;
-    fill: none;
-    opacity: $line-alpha;
-    stroke: $line-color;
-    stroke-linecap: round;
-    stroke-width: $ring-size;
-    transform: rotate3d(0, 0, 1, 0deg);
-    transform-origin: 50% 50%;
-  }
-  .ring {
-    fill: none;
-    opacity: $ring-alpha;
-    stroke: $ring-color;
-    stroke-width: $ring-size;
-  }
-}
-@keyframes spinner-rotate {
-  to {
-    transform: rotate3d(0, 0, 1, 360deg);
-  }
-}
-@keyframes spinner-arc {
-  from {
-    stroke-dasharray: 0 150;
-    stroke-dashoffset: 0;
-  }
-  to {
-    stroke-dasharray: 100 150;
-    stroke-dashoffset: -140;
-  }
-}
-
+  
+  
 .poster{
   border-radius: 15px;
   max-width: 170px;
