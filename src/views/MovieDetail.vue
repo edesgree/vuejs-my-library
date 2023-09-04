@@ -1,7 +1,8 @@
 <script setup>
-import { ref, watch, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { fetchMovieById } from '../api'
+import RatingScore from '../components/RatingScore.vue'
 const route = useRoute()
 const movieId = ref(route.params.id)
 const movie = ref(null)
@@ -18,6 +19,7 @@ onMounted(async () => {
       error.value = movieData.Error
     } else {
       movie.value = movieData
+      console.log(movieData)
     }
   } catch (err) {
     // Handle other types of errors (e.g., network errors)
@@ -32,6 +34,14 @@ onMounted(async () => {
   <div class="movie-detail" v-if="movie">
     <img :src="movie.Poster" :alt="movie.Title" />
     <h1>{{ movie.Title }}</h1>
+    <RatingScore :score="movie.imdbRating" />
+    <div class="movie-info">
+      <div class="movie-info-detail">
+        <span>{{ movie.Runtime }}</span>
+        <span>{{ movie.Year }}</span>
+        <span>{{ movie.Genre }}</span>
+      </div>
+    </div>
     <p>{{ movie.Plot }}</p>
   </div>
 </template>

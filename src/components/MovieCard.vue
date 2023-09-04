@@ -3,7 +3,7 @@ import { useMoviesStore } from '../stores'
 import iconPlaceholder from '../assets/img/icon-film.svg'
 import IconBookmark from './icons/IconBookmark.vue'
 import IconBookmarkFull from './icons/IconBookmarkFull.vue'
-
+import RatingScore from './RatingScore.vue'
 defineProps({
   type: String,
   movie: Object
@@ -70,7 +70,7 @@ const store = useMoviesStore()
       <div class="movie-title">
         <h2 class="movie-title-text">{{ movie.Title }}{{ movie.plot }}</h2>
         <div class="movie-title-rating">
-          ⭐ <span>{{ movie.imdbRating }}</span>
+          <RatingScore :score="movie.imdbRating" />
         </div>
       </div>
       <div class="movie-info">
@@ -89,7 +89,7 @@ const store = useMoviesStore()
           params: { id: movie.imdbID }
         }"
       >
-        more info 2
+        more info
       </RouterLink>
     </div>
   </div>
