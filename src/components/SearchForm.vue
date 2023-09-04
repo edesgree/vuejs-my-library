@@ -2,7 +2,7 @@
 import { ref, watch, onMounted } from 'vue'
 
 import { useMoviesStore } from '../stores'
-import { fetchMovies, fetchMovieById } from '../api' // Import the fetchMovies function
+import { fetchMoviesTMDB, fetchMovieByIdTMDB } from '../api' // Import the fetchMovies function
 import router from '../router'
 import InputField from '../components/InputField.vue'
 
@@ -20,21 +20,22 @@ const handleSearch = async (searchQuery) => {
 
   try {
     // first API call to get basic movie info
-    const basicMovies = await fetchMovies(searchQuery)
+    const basicMovies = await fetchMoviesTMDB(searchQuery)
     console.log('basicMovies', basicMovies)
 
     //display error if no movie found
     if (basicMovies.Error) {
       store.searchError = basicMovies.Error
-    } else if (Array.isArray(basicMovies.Search)) {
+    } else if (Array.isArray(basicMovies.results)) {
+      console.log('basicMovies.results', basicMovies.results)
       //loop through movies and fetch more detail by using a second API call (fetchMovieById)
       const detailedMovies = await Promise.all(
-        basicMovies.Search.map(async (movie) => {
-          const details = await fetchMovieById(movie.imdbID)
+        basicMovies.results.map(async (movie) => {
+          const details = await fetchMovieByIdTMDB(movie.id)
           //  complete the object with details and isWatched property to each movie object (gets true if matching ids)
           return {
             ...details,
-            isWatched: store.myWatchList.some((m) => m.imdbID === movie.imdbID)
+            isWatched: store.myWatchList.some((m) => m.id === movie.id)
           }
         })
       )

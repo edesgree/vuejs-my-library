@@ -9,6 +9,7 @@ defineProps({
   movie: Object
 })
 const store = useMoviesStore()
+console.log('poster URL', store.posterURL)
 </script>
 
 <template>
@@ -60,7 +61,7 @@ const store = useMoviesStore()
       </div>
 
       <img
-        :src="movie.Poster === 'N/A' ? iconPlaceholder : movie.Poster"
+        :src="movie.poster_path === null ? iconPlaceholder : store.posterURL + movie.poster_path"
         :alt="movie.Title"
         class="poster"
       />
@@ -86,7 +87,7 @@ const store = useMoviesStore()
         class="btn btn-xs"
         :to="{
           name: 'movie',
-          params: { id: movie.imdbID }
+          params: { id: movie.id }
         }"
       >
         more info

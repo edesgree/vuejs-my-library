@@ -4,7 +4,8 @@ export const useMoviesStore = defineStore('movies', {
     myWatchList: JSON.parse(localStorage.getItem('watchlist')) || [],
     moviesResult: [],
     searchError: '',
-    loading: false
+    loading: false,
+    posterURL: 'https://image.tmdb.org/t/p/w500'
   }),
   getters: {
     getMyWatchList(state) {

@@ -10,7 +10,7 @@ const store = useMoviesStore()
   <span v-if="store.loading" class="loading loading-spinner text-primary"></span>
 
   <ul v-if="store.moviesResult" class="movies-list" :aria-busy="store.loading">
-    <li v-for="movie in store.moviesResult" :key="movie.imdbID">
+    <li v-for="movie in store.moviesResult" :key="movie.id">
       <movie-card :movie="movie" type="search" />
     </li>
   </ul>
