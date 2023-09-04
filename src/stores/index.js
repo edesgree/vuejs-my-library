@@ -15,13 +15,13 @@ export const useMoviesStore = defineStore('movies', {
   actions: {
     addToWatchlist(movie) {
       // add only if not already in list
-      if (!this.myWatchList.find((m) => m.imdbID === movie.imdbID)) {
+      if (!this.myWatchList.find((m) => m.id === movie.id)) {
         this.myWatchList.unshift(movie)
         localStorage.setItem('watchlist', JSON.stringify(this.myWatchList))
         console.log('movie added')
 
         // set selected to true
-        const currentSelection = this.moviesResult.find((m) => m.imdbID === movie.imdbID)
+        const currentSelection = this.moviesResult.find((m) => m.id === movie.id)
         console.log('currentSelection', currentSelection)
         currentSelection.selected = true
       } else {
@@ -29,18 +29,18 @@ export const useMoviesStore = defineStore('movies', {
       }
     },
     removeFromWatchlist(movie) {
-      const index = this.myWatchList.findIndex((m) => m.imdbID === movie.imdbID)
+      const index = this.myWatchList.findIndex((m) => m.id === movie.id)
       this.myWatchList.splice(index, 1)
       localStorage.setItem('watchlist', JSON.stringify(this.myWatchList))
       console.log('movie removed', movie)
 
       // set selected to false
-      const currentSelection = this.moviesResult.find((m) => m.imdbID === movie.imdbID)
+      const currentSelection = this.moviesResult.find((m) => m.id === movie.id)
       console.log('currentSelection', currentSelection)
       currentSelection.selected = false
     },
     markAsWatched(movie) {
-      const currentSelection = this.myWatchList.find((m) => m.imdbID === movie.imdbID)
+      const currentSelection = this.myWatchList.find((m) => m.id === movie.id)
       currentSelection.isWatched = true
       localStorage.setItem('watchlist', JSON.stringify(this.myWatchList))
       console.log('movie marked as watched', movie.isWatched)
