@@ -1,8 +1,14 @@
 <script setup>
-defineProps({
-  score: String
+import { computed } from 'vue'
+
+const props = defineProps({
+  score: {
+    type: String,
+    default: 'N/A' // Provide a default value
+  }
 })
+const roundedScore = computed(() => parseFloat(props.score).toFixed(1))
 </script>
 <template>
-  ⭐ <span>{{ score }}</span>
+  <span>⭐ {{ roundedScore }}</span>
 </template>
