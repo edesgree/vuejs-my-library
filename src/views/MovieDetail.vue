@@ -16,14 +16,19 @@ onMounted(async () => {
   store.loading = true
   try {
     const movieData = await fetchMovieByIdTMDB(movieId.value)
-    console.log(store.loading)
+
     // Check for a specific error condition in the API response
     if (movieData.Error) {
       // Set a custom error message
       error.value = movieData.Error
     } else {
-      movie.value = movieData
-      console.log(movieData)
+      if (store.isInWatchlist(movieData)) {
+        // add inWatchlist property to movie object if it is in watchlist
+        movieData.inWatchlist = true
+        movie.value = movieData
+      } else {
+        movie.value = movieData
+      }
     }
   } catch (err) {
     // Handle other types of errors (e.g., network errors)
@@ -34,10 +39,11 @@ onMounted(async () => {
   }
 })
 const releaseDate = computed(() => movie.value.release_date.substring(0, 4))
+const runtime = computed(() => movie.value.runtime + ' min')
 </script>
 <template>
   <span v-if="store.loading" class="loading loading-spinner text-primary"></span>
-  <div>movie {{ $route.params.id }}</div>
+
   <p v-if="error">error: {{ error }}</p>
 
   <div class="movie-detail" v-if="movie">
@@ -63,13 +69,16 @@ const releaseDate = computed(() => movie.value.release_date.substring(0, 4))
 
         <div class="movie-info">
           <div class="movie-info-detail">
-            <span>{{ movie.Runtime }}</span>
-            <span>{{ movie.Year }}</span>
+            <span>{{ runtime }}</span>
           </div>
         </div>
-        <p>{{ movie.Plot }}</p>
-        <div class="card-actions justify-end">
-          <button class="btn btn-sm btn-primary">Add to my list</button>
+        <p>{{ movie.overview }}</p>
+
+        <div class="card-actions justify-end join">
+          <button v-if="!movie.inWatchlist" class="join-item btn btn-sm btn-primary">
+            Add to my list
+          </button>
+          <span v-else>movie already in watchlist</span>
         </div>
       </div>
     </div>

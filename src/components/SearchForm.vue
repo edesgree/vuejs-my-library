@@ -32,14 +32,16 @@ const handleSearch = async (searchQuery) => {
       const detailedMovies = await Promise.all(
         basicMovies.results.map(async (movie) => {
           const details = await fetchMovieByIdTMDB(movie.id)
-          //  complete the object with details and isWatched property to each movie object (gets true if matching ids)
+          //  complete the object with details, isWatched and inWatchlist property to each movie object (gets true if matching ids)
           return {
             ...details,
-            isWatched: store.myWatchList.some((m) => m.id === movie.id)
+            inWatchlist: store.myWatchList.some((m) => m.id === movie.id),
+            isWatched: store.myWatchList.some((m) => m.id === movie.id && m.isWatched)
           }
         })
       )
       store.moviesResult = detailedMovies
+      console.log('detailedMovies', detailedMovies)
     } else {
       store.searchError = 'unexpected error'
     }

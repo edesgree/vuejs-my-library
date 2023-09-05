@@ -24,6 +24,7 @@ export const useMoviesStore = defineStore('movies', {
         const currentSelection = this.moviesResult.find((m) => m.id === movie.id)
         console.log('currentSelection', currentSelection)
         currentSelection.selected = true
+        console.log('movie resulst', this.moviesResult)
       } else {
         console.log('movie already in list')
       }
@@ -43,7 +44,11 @@ export const useMoviesStore = defineStore('movies', {
       const currentSelection = this.myWatchList.find((m) => m.id === movie.id)
       currentSelection.isWatched = true
       localStorage.setItem('watchlist', JSON.stringify(this.myWatchList))
-      console.log('movie marked as watched', movie.isWatched)
+      console.log('movie marked as watched', movie)
+      console.log('movie resulst', this.moviesResult)
+    },
+    isInWatchlist(movie) {
+      return this.myWatchList.find((m) => m.id === movie.id)
     }
   }
 })
