@@ -10,5 +10,5 @@ const props = defineProps({
 const roundedScore = computed(() => parseFloat(props.score).toFixed(1))
 </script>
 <template>
-  <span>⭐ {{ roundedScore }}</span>
+  <span v-if="roundedScore > 0">⭐ {{ roundedScore }}</span>
 </template>

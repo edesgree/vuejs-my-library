@@ -24,8 +24,8 @@ const handleSearch = async (searchQuery) => {
     console.log('basicMovies', basicMovies)
 
     //display error if no movie found
-    if (basicMovies.Error) {
-      store.searchError = basicMovies.Error
+    if (basicMovies.Error || basicMovies.results.length === 0) {
+      store.searchError = basicMovies.Error || 'Nothing found'
     } else if (Array.isArray(basicMovies.results)) {
       console.log('basicMovies.results', basicMovies.results)
       //loop through movies and fetch more detail by using a second API call (fetchMovieById)

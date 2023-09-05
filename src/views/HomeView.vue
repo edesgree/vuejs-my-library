@@ -9,7 +9,7 @@ const store = useMoviesStore()
 <template>
   <span v-if="store.loading" class="loading loading-spinner text-primary"></span>
 
-  <ul v-if="store.moviesResult" class="movies-list" :aria-busy="store.loading">
+  <ul v-if="store.moviesResult.length > 0" class="movies-list" :aria-busy="store.loading">
     <li v-for="movie in store.moviesResult" :key="movie.id">
       <movie-card :movie="movie" type="search" />
     </li>
