@@ -72,9 +72,11 @@ const store = useMoviesStore()
       </div>
       <div class="movie-info">
         <div class="movie-info-detail">
-          <span>{{ movie.Runtime }}</span>
-          <span>{{ movie.Year }}</span>
-          <span>{{ movie.Genre }}</span>
+          <span>{{ movie.runtime + ' min' }}</span>
+          <span>{{ movie.release_date.substring(0, 4) }}</span>
+          <div class="movie-info-genres">
+            <span v-for="genre in movie.genres" :key="genre.id">{{ genre.name }}</span>
+          </div>
         </div>
       </div>
       <div class="movie-desc">{{ movie.tagline }}</div>

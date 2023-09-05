@@ -175,6 +175,11 @@ body {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
+            .movie-info-genres{
+              display: flex;
+              flex-wrap: wrap;
+            gap: 5px;
+            }
           }
           .buttons-group{
             display: flex;

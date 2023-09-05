@@ -2,7 +2,7 @@ import axios from 'axios'
 // fetch OMDB API with search query
 const OMDB_API_KEY = 'ce739ee3'
 const OMDB_API_URL = 'https://www.omdbapi.com/'
-const TMDB_API_KEY = '752ef76dcdb90b9bcadbc6a9a780ab28'
+//const TMDB_API_KEY = '752ef76dcdb90b9bcadbc6a9a780ab28'
 const TMDB_API_URL = 'https://api.themoviedb.org/3/'
 const TMDB_API_OPTIONS = {
   method: 'GET',

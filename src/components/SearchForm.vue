@@ -28,6 +28,9 @@ const handleSearch = async (searchQuery) => {
       store.searchError = basicMovies.Error || 'Nothing found'
     } else if (Array.isArray(basicMovies.results)) {
       console.log('basicMovies.results', basicMovies.results)
+      basicMovies.results.map((movie) => {
+        console.log(movie.id)
+      })
       //loop through movies and fetch more detail by using a second API call (fetchMovieById)
       const detailedMovies = await Promise.all(
         basicMovies.results.map(async (movie) => {
