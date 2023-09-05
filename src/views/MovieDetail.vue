@@ -55,7 +55,9 @@ const releaseDate = computed(() => movie.value.release_date.substring(0, 4))
           </div>
           <div>
             <p><strong>Genre</strong></p>
-            <span>{{ movie.Genre }}</span>
+            <div v-for="genre in movie.genres" :key="genre.id">
+              <span>{{ genre.name }}</span>
+            </div>
           </div>
         </div>
 
