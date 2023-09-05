@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+
 export const useMoviesStore = defineStore('movies', {
   state: () => ({
     myWatchList: JSON.parse(localStorage.getItem('watchlist')) || [],

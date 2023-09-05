@@ -29,7 +29,22 @@ export async function fetchMoviesTMDB(query) {
   }
 }
 
-export async function fetchMovies(query) {
+// fetch TMDB API with movie ID, that gets more details than the one above
+export async function fetchMovieByIdTMDB(id) {
+  try {
+    const response = await axios.get(`${TMDB_API_URL}movie/${id}`, TMDB_API_OPTIONS)
+    const data = response.data
+    console.log('(TMDB)  fetching movie by Id', data)
+    return data || []
+  } catch (err) {
+    console.error('(TMDB) Error fetching movie by Id:', err)
+    throw new Error(err)
+  } finally {
+    console.log('(TMDB) Done fetching movie by Id')
+  }
+}
+
+export async function fetchMoviesOMDB(query) {
   try {
     const response = await axios.get(`${OMDB_API_URL}?apikey=${OMDB_API_KEY}&s=${query}`)
     const data = response.data
@@ -45,7 +60,7 @@ export async function fetchMovies(query) {
 }
 
 // fetch OMDB API with movie ID, that gets more details than the one above
-export async function fetchMovieById(id) {
+export async function fetchMovieByIdOMDB(id) {
   try {
     const response = await axios.get(`${OMDB_API_URL}?apikey=${OMDB_API_KEY}&i=${id}&plot=short`)
     const data = response.data
@@ -55,20 +70,5 @@ export async function fetchMovieById(id) {
     throw new Error(err)
   } finally {
     console.log('done fetching movie by Id')
-  }
-}
-
-// fetch TMDB API with movie ID, that gets more details than the one above
-export async function fetchMovieByIdTMDB(id) {
-  try {
-    const response = await axios.get(`${TMDB_API_URL}movie/${id}`, TMDB_API_OPTIONS)
-    const data = response.data
-    console.log('(TMDB)  fetching movie by Id', data)
-    return data || []
-  } catch (err) {
-    console.error('(TMDB) Error fetching movie by Id:', err)
-    throw new Error(err)
-  } finally {
-    console.log('(TMDB) Done fetching movie by Id')
   }
 }
