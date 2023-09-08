@@ -1,5 +1,5 @@
 <script setup>
-import iconPlaceholder from '../assets/img/icon-film.svg'
+import iconPlaceholder from '../assets/img/placeholder.svg'
 import { useMoviesStore } from '../stores'
 const store = useMoviesStore()
 defineProps({

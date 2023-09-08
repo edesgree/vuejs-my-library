@@ -9,17 +9,10 @@ $weight-medium: 600;
 $weight-bold: 700;
 $title-weight: $weight-bold;
 $subtitle-weight: $weight-medium;
-$border-radius: 10px;
+$border-radius: 20px;
 $get-path-to-assets: 'src/assets/img/';
+$posterMinHeight:255px;
 
-@mixin mobile {
-    @media (max-width: 699px) { @content; }
-  }
-
-  @mixin tablet {
-    @media (min-width: 700px) { @content; }
-  }
- 
 
 //loading animation
 $animation-speed: 2s;
@@ -30,3 +23,18 @@ $line-alpha: 0.73;
 $ring-color: $yellow;
 $ring-alpha: 0.2;
 $ring-size: 4;
+
+
+// repsonsive
+@mixin mobileUp {
+  @media (min-width: theme('screens.sm')) { @content; }
+}
+@mixin tabletUp {
+  @media (min-width: theme('screens.md')) { @content; }
+}
+@mixin desktopUp {
+  @media (min-width: theme('screens.lg')) { @content; }
+}
+@mixin wideUp {
+  @media (min-width: theme('screens.xl')) { @content; }
+}

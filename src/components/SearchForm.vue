@@ -85,7 +85,7 @@ onMounted(() => {
       />
 
       <button
-        class="invisible btn-primary join-item rounded-r-full"
+        class="hidden btn-primary join-item rounded-r-full"
         @click.prevent="handleSearch(search)"
       >
         <IconSearch :class="`h-6 w-6`" />

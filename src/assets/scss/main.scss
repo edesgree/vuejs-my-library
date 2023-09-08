@@ -23,17 +23,36 @@ body  {
     justify-content: space-between;
     padding: 20px;
     text-align:center;
+    .navbar{
+      gap:10px;
+      .logo-wrap{
+        align-items: flex-start;
+        display: flex;
+        flex:1;
+        flex-direction: column;
+        .subtitle{
+          margin-left: 60px;
+        }
+      }
+      .menu{
+        flex-direction: row;
+        a.router-link-exact-active {
+         color: var(--color-text);
+         svg path{
+           fill: hsl(var(--p));
+         }
+       }
+       
+        a.router-link-exact-active:hover {
+         background-color: transparent;
+       }
+     }
+    }
     h1{
       color:var(--primary-inverse);
       margin: 0;
     }
-    .logo-wrap{
-      display: flex;
-      flex-direction: row;
-      .subtitle{
-        margin-left: 60px;
-      }
-    }
+    
     .logo{
       align-items: center;
       color:$dark-white;
@@ -48,29 +67,18 @@ body  {
       display: flex;
       flex-direction: column;
       width: 100%;
-      @include tablet{
+      @include tabletUp{
         flex-direction: row;
         gap:10px;
       }
       ul{
         gap:10px;
-        @include mobile{
+        @include mobileUp{
           flex-direction: column;
         }
       }
     }
-    .menu{
-       a.router-link-exact-active {
-        color: var(--color-text);
-        svg path{
-          fill: hsl(var(--p));
-        }
-      }
-      
-       a.router-link-exact-active:hover {
-        background-color: transparent;
-      }
-    }
+    
   }
   .search-form{
     align-items: center;
@@ -131,16 +139,25 @@ body  {
     padding-left: 0;
     padding-top: 40px;
     &.movies-list-simple{
-      display: flex;
-      flex-wrap: wrap;
-    .movie{
-        flex-direction: column;
-        .bookmark-action{
-          position: absolute;
-          right: 10px;
-          top: 10px;
-        }
+      display: grid;
+      grid-template-columns: 1fr;
+      @include mobileUp{
+        grid-template-columns: repeat(2,1fr);
       }
+      @include tabletUp{
+        grid-template-columns: repeat(4,1fr);
+      }
+      @include wideUp {
+        grid-template-columns: repeat(6,1fr);    
+      }
+      .movie{
+          flex-direction: column;
+          .bookmark-action{
+            position: absolute;
+            right: 10px;
+            top: 10px;
+          }
+        }
     }
     &.movies-list-detailed{
       display: grid;
@@ -153,17 +170,24 @@ body  {
       }
     }
     .movie {
-      align-items: flex-start;
       
-      display: flex;
       gap:30px;
+      
       justify-content: space-between;
       padding-bottom: 30px;
       
-      .movie-poster{ 
+      .movie-poster{
+        background:$grey-dark;
+        border-radius: $border-radius;
         display: flex;
-        flex-direction: column;
+        flex-direction: column; 
+        justify-content: center;
+        margin-bottom: 1rem;
+        min-height: $posterMinHeight;
         position: relative;
+        img{
+          
+        }
         .bookmark-action{
           display: flex;
           .join{
@@ -176,6 +200,8 @@ body  {
         }
       }
       .movie-details {
+        align-items: flex-end;
+        display: flex;
         flex:1;
         .movie-title {
           align-items: center;
@@ -258,7 +284,6 @@ body  {
   
 .poster{
   border-radius: 15px;
-  max-width: 170px;
 }
 
 //buttons
