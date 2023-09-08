@@ -19,7 +19,8 @@ module.exports = {
           success: '#36D399',
           warning: '#FBBD23',
           error: '#F87272',
-          'base-100': '#2A303C'
+          'base-100': '#2A303C',
+          '--rounded-box': '1rem' // border radius rounded-box utility class, used in card and other large boxes
         }
       }
     ],

@@ -2,8 +2,10 @@
 import IconLogo from './icons/IconLogo.vue'
 import IconHome from './icons/IconHome.vue'
 import IconBookmark from './icons/IconBookmark.vue'
-import SearchForm from './SearchForm.vue'
+import IconBookmark2 from './icons/IconBookmark2.vue'
+
 import IconSettings from './icons/IconSettings.vue'
+import SearchForm from './SearchForm.vue'
 import { RouterLink } from 'vue-router'
 </script>
 <template>
@@ -11,7 +13,7 @@ import { RouterLink } from 'vue-router'
     <div class="navbar">
       <div class="flex-1 logo-wrap">
         <RouterLink class="btn btn-dark normal-case text-xl" aria-label="homepage" to="/">
-          <IconLogo />
+          <IconBookmark2 /> <span>My Library<span class="text-primary">.</span></span>
         </RouterLink>
 
         <p class="subtitle">keep a watch list</p>

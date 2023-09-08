@@ -75,17 +75,17 @@ onMounted(() => {
 </script>
 <template>
   <div class="form-control">
-    <form method="post" action="#" class="search-form join">
+    <form method="post" action="#" class="search-form">
       <input-field
         unique="search"
         label="Search"
-        class="input input-bordered w-24 md:w-auto join-item"
+        class="input rounded-full input-bordered w-24 md:w-auto join-item"
         placeholder="Search for a movie"
         v-on:updated="search = $event"
       />
 
       <button
-        class="btn-sm btn-primary join-item rounded-r-full"
+        class="invisible btn-primary join-item rounded-r-full"
         @click.prevent="handleSearch(search)"
       >
         <IconSearch :class="`h-6 w-6`" />

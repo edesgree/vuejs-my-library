@@ -82,10 +82,6 @@ const runtime = computed(() => movie.value.runtime + ' min')
         </div>
       </div>
     </div>
-    <div class="flex-initial"></div>
-    <div class="flex-auto prose">
-      <h1></h1>
-    </div>
   </div>
   <div v-else>Loading...</div>
 </template>
