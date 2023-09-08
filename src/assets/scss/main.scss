@@ -1,9 +1,10 @@
 
 
-body {
+[data-theme]{
   background: $background url('#{$get-path-to-assets}blob.svg') no-repeat center center;
-    background-size: cover;
-    
+  background-size: cover;
+}
+body  {
     font-family: $family-primary;
     font-weight: $weight-normal;
     min-height: 100vh;
@@ -124,13 +125,27 @@ body {
 
   
   .movies-list {
-    display: grid;
     gap: 30px;
-    grid-template-columns: 1fr 1fr;
     list-style-type: none;
     margin-bottom: 40px;
     padding-left: 0;
     padding-top: 40px;
+    &.movies-list-simple{
+      display: flex;
+      flex-wrap: wrap;
+    .movie{
+        flex-direction: column;
+        .bookmark-action{
+          position: absolute;
+          right: 10px;
+          top: 10px;
+        }
+      }
+    }
+    &.movies-list-detailed{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
     li{
       list-style-type: none;
       &:not(:last-child){
@@ -144,15 +159,24 @@ body {
       gap:30px;
       justify-content: space-between;
       padding-bottom: 30px;
-      .movie-poster{
-        position: relative; 
+      
+      .movie-poster{ 
+        display: flex;
+        flex-direction: column;
+        position: relative;
         .bookmark-action{
-          position: absolute;
-          right: 10px;
-          top: 10px;
+          display: flex;
+          .join{
+            flex:1;
+            button{
+              flex: 1;
+            }
+          }
+          
         }
       }
       .movie-details {
+        flex:1;
         .movie-title {
           align-items: center;
           display: flex;

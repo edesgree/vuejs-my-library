@@ -1,5 +1,4 @@
 <script setup>
-import IconLogo from './icons/IconLogo.vue'
 import IconHome from './icons/IconHome.vue'
 import IconBookmark from './icons/IconBookmark.vue'
 import IconBookmark2 from './icons/IconBookmark2.vue'

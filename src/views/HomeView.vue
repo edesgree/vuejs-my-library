@@ -1,7 +1,7 @@
 <script setup>
 import { useMoviesStore } from '../stores'
 
-import MovieCard from '../components/MovieCard.vue'
+import MovieCardSimple from '../components/MovieCardSimple.vue'
 import DummyText from '../components/DummyText.vue'
 
 const store = useMoviesStore()
@@ -9,9 +9,13 @@ const store = useMoviesStore()
 <template>
   <span v-if="store.loading" class="loading loading-spinner text-primary"></span>
 
-  <ul v-if="store.moviesResult.length > 0" class="movies-list" :aria-busy="store.loading">
+  <ul
+    v-if="store.moviesResult.length > 0"
+    class="movies-list movies-list-simple"
+    :aria-busy="store.loading"
+  >
     <li v-for="movie in store.moviesResult" :key="movie.id">
-      <movie-card :movie="movie" type="search" />
+      <movie-card-simple :movie="movie" type="search" />
     </li>
   </ul>
   <p>{{ store.searchError }}</p>
