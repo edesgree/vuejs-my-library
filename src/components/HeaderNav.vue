@@ -18,7 +18,7 @@ import { RouterLink } from 'vue-router'
       </div>
       <div class="flex-none gap-2">
         <SearchForm />
-        <ul class="menu bg-base-200 lg:menu-horizontal rounded-box">
+        <ul class="menu bg-base-200 items-center lg:menu-horizontal rounded-box">
           <li>
             <RouterLink aria-label="homepage" to="/">
               <IconHome />

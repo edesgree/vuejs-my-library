@@ -5,7 +5,7 @@ import { useMoviesStore } from '../stores'
 import { fetchMoviesTMDB, fetchMovieByIdTMDB } from '../api' // Import the fetchMovies function
 import router from '../router'
 import InputField from '../components/InputField.vue'
-
+import IconSearch from '../components/icons/IconSearch.vue'
 const store = useMoviesStore()
 const search = ref('...')
 
@@ -75,17 +75,22 @@ onMounted(() => {
 </script>
 <template>
   <div class="form-control">
-    <form method="post" action="#" class="search-form">
+    <form method="post" action="#" class="search-form join">
       <input-field
         unique="search"
         label="Search"
-        class="input input-bordered w-24 md:w-auto"
+        class="input input-bordered w-24 md:w-auto join-item"
         placeholder="Search for a movie"
         v-on:updated="search = $event"
       />
-      <div class="submit-wrapper">
-        <button @click.prevent="handleSearch(search)">Search</button>
-      </div>
+
+      <button
+        class="btn-sm btn-primary join-item rounded-r-full"
+        @click.prevent="handleSearch(search)"
+      >
+        <IconSearch :class="`h-6 w-6`" />
+        Search
+      </button>
     </form>
   </div>
 </template>

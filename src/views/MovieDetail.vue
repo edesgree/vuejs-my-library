@@ -61,8 +61,8 @@ const runtime = computed(() => movie.value.runtime + ' min')
           </div>
           <div>
             <p><strong>Genre</strong></p>
-            <div v-for="genre in movie.genres" :key="genre.id">
-              <span>{{ genre.name }}</span>
+            <div class="movie-info-genres">
+              <span v-for="genre in movie.genres" :key="genre.id">{{ genre.name }}</span>
             </div>
           </div>
         </div>

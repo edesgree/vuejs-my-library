@@ -238,10 +238,17 @@ body {
 
 //buttons
 .btn-bookmark{
+  svg{
+    filter: drop-shadow(2px 3px 1px rgb(0 0 0 / 0.2));
+  }
   &.active,&:hover{
     background-color: transparent;
-    svg path{
-      fill: hsl(var(--p));
+    svg {
+      filter: drop-shadow(0px 0px 1px rgb(0 0 0 / 0.2));
+
+      path{
+        fill: hsl(var(--p));
+      }
     }
   }
 }
