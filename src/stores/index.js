@@ -43,9 +43,9 @@ export const useMoviesStore = defineStore('movies', {
     },
     markAsWatched(movie) {
       const currentSelection = this.myWatchList.find((m) => m.id === movie.id)
-      currentSelection.isWatched = true
+      currentSelection.isWatched = !currentSelection.isWatched
       localStorage.setItem('watchlist', JSON.stringify(this.myWatchList))
-      console.log('movie marked as watched', movie)
+      console.log(`movie ${movie.title} marked as watched ${currentSelection.isWatched}`)
       console.log('movie resulst', this.moviesResult)
     },
     isInWatchlist(movie) {

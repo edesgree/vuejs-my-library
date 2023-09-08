@@ -38,7 +38,7 @@ const store = useMoviesStore()
             class="join-item btn btn-secondary btn-outline btn-sm"
             data-tooltip="seen it!"
             v-if="movie.isWatched && type == 'watchlist'"
-            disabled
+            @click.prevent="store.markAsWatched(movie)"
           >
             ✅
           </button>
