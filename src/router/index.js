@@ -22,6 +22,11 @@ const router = createRouter({
       name: 'movie',
       props: true,
       component: MovieDetail
+    },
+    {
+      path: '/settings',
+      name: 'Settings',
+      component: () => import('../components/DummyText.vue')
     }
   ]
 })

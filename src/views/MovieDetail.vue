@@ -16,24 +16,29 @@ onMounted(async () => {
   store.loading = true
   try {
     const movieData = await fetchMovieByIdTMDB(movieId.value)
-
+    console.log('le movieData', movieData)
     // Check for a specific error condition in the API response
     if (movieData.Error) {
       // Set a custom error message
       error.value = movieData.Error
     } else {
-      if (store.isInWatchlist(movieData)) {
-        // add inWatchlist property to movie object if it is in watchlist
-        movieData.inWatchlist = true
-        movie.value = movieData
-      } else {
-        movie.value = movieData
+      console.log(
+        'test',
+        store.myWatchList.find((m) => m.id === movieId.value)
+      )
+      console.log('movieId.value', movieId.value)
+      console.log(`store.isInWatchlist(${movieId.value})`, store.isInWatchlist(movieData))
+      movie.value = {
+        ...movieData,
+        inWatchlist: store.isInWatchlist(movieId.value)
       }
+
+      console.log('le movie', movie.value)
     }
   } catch (err) {
     // Handle other types of errors (e.g., network errors)
-    error.value = 'An error occurred while fetching movie details'
-    console.error(err.message)
+    error.value = 'An error occurred while fetching movie details: ' + err.message
+    console.error('API Error:', err)
   } finally {
     store.loading = false
   }

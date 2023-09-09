@@ -50,6 +50,9 @@ export const useMoviesStore = defineStore('movies', {
     },
     isInWatchlist(movie) {
       return this.myWatchList.find((m) => m.id === movie.id)
+    },
+    isWatched(movie) {
+      return this.myWatchList.find((m) => m.id === movie.id).isWatched
     }
   }
 })

@@ -2,7 +2,6 @@
 import { useMoviesStore } from '../stores'
 
 import MovieCardSimple from '../components/MovieCardSimple.vue'
-import DummyText from '../components/DummyText.vue'
 
 const store = useMoviesStore()
 </script>
@@ -19,5 +18,4 @@ const store = useMoviesStore()
     </li>
   </ul>
   <p>{{ store.searchError }}</p>
-  <DummyText />
 </template>
