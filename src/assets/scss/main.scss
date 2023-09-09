@@ -252,8 +252,15 @@ body  {
   }
  
   .movie-detailed-view{
+    .card{
+      flex-direction: column;
+      @include mobileUp{
+        flex-direction: row;
+      }
+    }
     figure{
       min-width: 200px;
+      padding-left: var(--padding-card, 2rem);
     }
   
   }

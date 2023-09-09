@@ -22,15 +22,10 @@ onMounted(async () => {
       // Set a custom error message
       error.value = movieData.Error
     } else {
-      console.log(
-        'test',
-        store.myWatchList.find((m) => m.id === movieId.value)
-      )
-      console.log('movieId.value', movieId.value)
-      console.log(`store.isInWatchlist(${movieId.value})`, store.isInWatchlist(movieData))
+      // Set the movie data
       movie.value = {
         ...movieData,
-        inWatchlist: store.isInWatchlist(movieId.value)
+        inWatchlist: store.isInWatchlist(movieData) // Set inWatchlist as a ref here
       }
 
       console.log('le movie', movie.value)
@@ -82,9 +77,11 @@ const runtime = computed(() => movie.value.runtime + ' min')
         </div>
         <p>{{ movie.overview }}</p>
 
-        <div class="card-actions justify-end join">
+        <div class="card-actions justify-end md:!justify-center join">
+          <p v-if="store.inWatchlist">This movie is in your watchlist</p>
+          <p v-else>This movie is not in your watchlist</p>
           <button
-            v-if="!movie.inWatchlist"
+            v-if="!store.inWatchlist"
             @click.prevent="store.addToWatchlist(movie)"
             class="join-item btn btn-sm btn-primary"
           >
@@ -98,6 +95,7 @@ const runtime = computed(() => movie.value.runtime + ' min')
             ❌ Remove from my list
           </button>
           <button
+            v-if="store.inWatchlist"
             @click.prevent="store.markAsWatched(movie)"
             class="join-item btn btn-sm btn-secondary"
           >
