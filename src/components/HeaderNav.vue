@@ -8,7 +8,7 @@ import SearchForm from './SearchForm.vue'
 import { RouterLink } from 'vue-router'
 </script>
 <template>
-  <header class="bg-base-100">
+  <header class="bg-base-200">
     <div class="navbar">
       <div class="logo-wrap">
         <RouterLink class="btn btn-dark normal-case text-xl" aria-label="homepage" to="/">
@@ -16,7 +16,7 @@ import { RouterLink } from 'vue-router'
         </RouterLink>
       </div>
       <SearchForm />
-      <ul class="menu bg-base-200 items-center lg:menu-horizontal rounded-box">
+      <ul class="menu items-center lg:menu-horizontal rounded-box">
         <li>
           <RouterLink aria-label="homepage" to="/">
             <IconHome />
