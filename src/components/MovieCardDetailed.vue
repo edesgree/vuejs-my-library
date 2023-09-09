@@ -32,16 +32,6 @@ defineProps({
         </div>
       </div>
       <div class="movie-desc">{{ movie.tagline }}</div>
-
-      <RouterLink
-        class="btn btn-xs"
-        :to="{
-          name: 'movie',
-          params: { id: movie.id }
-        }"
-      >
-        more info
-      </RouterLink>
     </div>
   </div>
 </template>

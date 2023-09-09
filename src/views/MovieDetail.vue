@@ -46,8 +46,11 @@ const runtime = computed(() => movie.value.runtime + ' min')
 
   <p v-if="error">error: {{ error }}</p>
 
-  <div class="movie-detail" v-if="movie">
-    <div class="card card-side bg-base-100 shadow-xl">
+  <div class="movie-detailed-view" v-if="movie">
+    <div
+      class="card card-side bg-base-100 shadow-xl"
+      :style="{ backgroundImage: `url(${store.posterURL + movie.backdrop_path})` }"
+    >
       <figure>
         <MovieImage :path="movie.poster_path" :title="movie.title" />
       </figure>
@@ -75,13 +78,42 @@ const runtime = computed(() => movie.value.runtime + ' min')
         <p>{{ movie.overview }}</p>
 
         <div class="card-actions justify-end join">
-          <button v-if="!movie.inWatchlist" class="join-item btn btn-sm btn-primary">
+          <button
+            v-if="!movie.inWatchlist"
+            @click.prevent="store.addToWatchlist(movie)"
+            class="join-item btn btn-sm btn-primary"
+          >
             Add to my list
           </button>
-          <span v-else>movie already in watchlist</span>
+          <button
+            v-else
+            @click.prevent="store.removeFromWatchlist(movie)"
+            class="join-item btn btn-sm btn-secondary"
+          >
+            ❌ Remove from my list
+          </button>
+          <button
+            @click.prevent="store.markAsWatched(movie)"
+            class="join-item btn btn-sm btn-secondary"
+          >
+            <template v-if="movie.isWatched">👀 Mark as not watched yet</template>
+            <template v-else>👀 Mark as watched</template>
+          </button>
         </div>
       </div>
     </div>
   </div>
   <div v-else>Loading...</div>
 </template>
+<style scoped>
+.card {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #000;
+  background-position: center top;
+}
+.card figure,
+.card .card-body {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+</style>

@@ -103,22 +103,7 @@ body  {
       border-top-left-radius: 0;
    }
   }
-  .content {
-    align-items: center;
-    animation: grow0 1.5s forwards;
-    border-radius: 15px;
-    display: flex;
-    
-    flex-direction: column;
-    justify-content: center;
-    margin:0 auto;
-    max-width: 650px;
-    min-height: 100vh;
-    min-height: 250px;
-    min-width: 250px;
-    padding: 20px;
 
-  }
   /*Animate width to 100%*/
   @keyframes grow0 {
     from {
@@ -266,7 +251,12 @@ body  {
     }
   }
  
+  .movie-detailed-view{
+    figure{
+      min-width: 200px;
+    }
   
+  }
   .title{
     background:white;
     border: 6px solid $dark;

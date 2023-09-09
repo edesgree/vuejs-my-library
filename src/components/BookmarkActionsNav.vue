@@ -2,6 +2,7 @@
 import { useMoviesStore } from '../stores'
 import IconBookmark from './icons/IconBookmark.vue'
 import IconBookmarkFull from './icons/IconBookmarkFull.vue'
+import IconSearch from './icons/IconSearch.vue'
 const store = useMoviesStore()
 defineProps({
   type: String,
@@ -50,6 +51,17 @@ defineProps({
       >
         ❌
       </button>
+
+      <RouterLink
+        data-tip="More information"
+        class="tooltip join-item btn btn-secondary btn-outline btn-sm"
+        :to="{
+          name: 'movie',
+          params: { id: movie.id }
+        }"
+      >
+        <IconSearch />
+      </RouterLink>
     </div>
   </div>
 </template>
