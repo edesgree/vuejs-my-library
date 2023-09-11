@@ -79,25 +79,25 @@ const runtime = computed(() => movie.value.runtime + ' min')
         </div>
         <p>{{ movie.overview }}</p>
 
-        <div class="card-actions justify-end md:!justify-center join">
+        <div class="card-actions justify-end">
           <button
             v-if="!store.isInWatchlist(movie)"
             @click.prevent="store.addToWatchlist(movie)"
-            class="join-item btn btn-sm btn-primary"
+            class="btn btn-sm btn-primary"
           >
             Add to my list
           </button>
           <button
             v-else
             @click.prevent="store.removeFromWatchlist(movie)"
-            class="join-item btn btn-sm btn-secondary"
+            class="btn btn-sm btn-secondary"
           >
             ❌ Remove
           </button>
         </div>
         <template v-if="store.isInWatchlist(movie)">
-          <div class="form-control join-item">
-            <label class="label cursor-pointer">
+          <div class="form-control">
+            <label class="label cursor-pointer justify-end gap-2">
               <span class="label-text">Movie watched 👀 </span>
               <input
                 type="checkbox"
