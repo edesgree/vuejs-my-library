@@ -96,18 +96,15 @@ const runtime = computed(() => movie.value.runtime + ' min')
           </button>
         </div>
         <template v-if="store.isInWatchlist(movie)">
-          <button
-            @click.prevent="store.markAsWatched(movie)"
-            class="join-item btn btn-sm btn-secondary"
-          >
-            ee3
-            <template v-if="movie.isWatched">👀 Mark as not watched yet</template>
-            <template v-else>👀 Mark as watched</template>
-          </button>
           <div class="form-control join-item">
             <label class="label cursor-pointer">
-              <span class="label-text">Movie watched</span>
-              <input type="checkbox" class="toggle" v-model="w" />
+              <span class="label-text">Movie watched 👀 </span>
+              <input
+                type="checkbox"
+                class="toggle toggle-primary"
+                :checked="movie.isWatched"
+                @change="store.markAsWatched(movie)"
+              />
             </label>
           </div>
         </template>
