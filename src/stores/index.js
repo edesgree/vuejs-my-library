@@ -25,7 +25,6 @@ export const useMoviesStore = defineStore('movies', {
   actions: {
     addToWatchlist(movie) {
       // add only if not already in list
-
       if (!this.isInWatchlist(movie)) {
         movie = {
           ...movie,
@@ -35,9 +34,6 @@ export const useMoviesStore = defineStore('movies', {
 
         this.myWatchList.unshift(movie)
         localStorage.setItem('watchlist', JSON.stringify(this.myWatchList))
-        console.log('movie added', movie)
-
-        console.log('movie resulst', this.moviesResult)
       } else {
         console.log('movie already in list')
       }
@@ -48,7 +44,6 @@ export const useMoviesStore = defineStore('movies', {
       localStorage.setItem('watchlist', JSON.stringify(this.myWatchList))
       // set inWatchlist to false
       movie.inWatchlist = false
-      console.log('movie removed', movie)
     },
     markAsWatched(movie) {
       if (this.isInWatchlist(movie)) {
@@ -56,16 +51,9 @@ export const useMoviesStore = defineStore('movies', {
         this.myWatchList[index].isWatched = !this.myWatchList[index].isWatched
 
         localStorage.setItem('watchlist', JSON.stringify(this.myWatchList))
-        console.log('movie marked as watched', movie)
       } else {
         console.log('movie not in watchlist')
       }
     }
-    // Add a mutation/action to set isInWatchlist value
-
-    /*
-    isInWatchlist(movie) {
-      return this.myWatchList.some((m) => m.id === movie.id)
-    },*/
   }
 })

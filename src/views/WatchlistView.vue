@@ -2,7 +2,6 @@
 import { useMoviesStore } from '../stores'
 import MovieCardDetailed from '../components/MovieCardDetailed.vue'
 const store = useMoviesStore()
-console.log('myWatchList', store.myWatchList)
 </script>
 <template>
   <h1>My watch list</h1>

@@ -10,14 +10,12 @@ const route = useRoute()
 const movieId = ref(route.params.id)
 const movie = ref(null)
 const error = ref(null)
-//const inWatchlist = ref(false) // Define inWatchlist as a ref
 
 onMounted(async () => {
   // Fetch movie details using the movie ID from the route
   store.loading = true
   try {
     const movieData = await fetchMovieByIdTMDB(movieId.value)
-    console.log('le movieData', movieData)
     // Check for a specific error condition in the API response
     if (movieData.Error) {
       // Set a custom error message
@@ -29,8 +27,6 @@ onMounted(async () => {
         inWatchlist: store.isInWatchlist(movieData), // Set inWatchlist as a ref here
         isWatched: store.isWatched(movieData) // Set isWatched as a ref here
       }
-
-      console.log('le movie', movie.value)
     }
   } catch (err) {
     // Handle other types of errors (e.g., network errors)

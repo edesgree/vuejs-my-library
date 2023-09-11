@@ -21,16 +21,11 @@ const handleSearch = async (searchQuery) => {
   try {
     // first API call to get basic movie info
     const basicMovies = await fetchMoviesTMDB(searchQuery)
-    console.log('basicMovies', basicMovies)
 
     //display error if no movie found
     if (basicMovies.Error || basicMovies.results.length === 0) {
       store.searchError = basicMovies.Error || 'Nothing found'
     } else if (Array.isArray(basicMovies.results)) {
-      console.log('basicMovies.results', basicMovies.results)
-      basicMovies.results.map((movie) => {
-        console.log(movie.id)
-      })
       //loop through movies and fetch more detail by using a second API call (fetchMovieById)
       const detailedMovies = await Promise.all(
         basicMovies.results.map(async (movie) => {
@@ -43,8 +38,8 @@ const handleSearch = async (searchQuery) => {
           }
         })
       )
+      // save promise result into store
       store.moviesResult = detailedMovies
-      console.log('detailedMovies', detailedMovies)
     } else {
       store.searchError = 'unexpected error'
     }
@@ -78,7 +73,7 @@ onMounted(() => {
     <input-field
       unique="search"
       label="Search"
-      class="input rounded-full input-bordered w-full sm:w-auto join-item"
+      classes="input rounded-full input-bordered w-full sm:w-auto join-item"
       placeholder="Search for a movie"
       v-on:updated="search = $event"
     />

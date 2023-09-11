@@ -1,13 +1,13 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 defineProps({
   label: String,
   unique: String,
-  class: String,
+  classes: String,
   placeholder: String
-});
-const value = ref('');
+})
+const value = ref('')
 </script>
 
 <template>
@@ -18,7 +18,7 @@ const value = ref('');
       :id="unique"
       v-model="value"
       v-on:input="$emit('updated', value)"
-      :class="class"
+      :class="classes"
       :placeholder="placeholder"
     />
   </div>

@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 // fetch TMDB API with search query
-// const TMDB_API_KEY = import.meta.env.TMDB_API_KEY
 const VITE_TMDB_SECRET_KEY = import.meta.env.VITE_TMDB_SECRET_KEY
 const TMDB_API_URL = 'https://api.themoviedb.org/3/'
 const TMDB_API_OPTIONS = {
@@ -15,7 +14,7 @@ export async function fetchMoviesTMDB(query) {
   try {
     console.log('TMDB_SECRET_KEY:', import.meta.env.TMDB_SECRET_KEY)
     const response = await axios.get(
-      `${TMDB_API_URL}search/movie?include_adult=true&query=${query}`,
+      `${TMDB_API_URL}search/movie?include_adult=false&query=${query}`,
       TMDB_API_OPTIONS
     )
     const data = response.data
