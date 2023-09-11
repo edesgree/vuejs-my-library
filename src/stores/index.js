@@ -52,10 +52,14 @@ export const useMoviesStore = defineStore('movies', {
     },
     markAsWatched(movie) {
       if (this.isInWatchlist(movie)) {
-        movie.isWatched = !movie.isWatched
+        const index = this.myWatchList.findIndex((m) => m.id === movie.id)
+        this.myWatchList[index].isWatched = !this.myWatchList[index].isWatched
+
         localStorage.setItem('watchlist', JSON.stringify(this.myWatchList))
+        console.log('movie marked as watched', movie)
+      } else {
+        console.log('movie not in watchlist')
       }
-      console.log('movie marked as watched', movie)
     }
     // Add a mutation/action to set isInWatchlist value
 
