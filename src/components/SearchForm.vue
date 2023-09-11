@@ -74,23 +74,21 @@ onMounted(() => {
 })
 </script>
 <template>
-  <div class="form-control">
-    <form method="post" action="#" class="search-form">
-      <input-field
-        unique="search"
-        label="Search"
-        class="input rounded-full input-bordered w-24 md:w-auto join-item"
-        placeholder="Search for a movie"
-        v-on:updated="search = $event"
-      />
+  <form method="post" action="#" class="form-control search-form">
+    <input-field
+      unique="search"
+      label="Search"
+      class="input rounded-full input-bordered w-full sm:w-auto join-item"
+      placeholder="Search for a movie"
+      v-on:updated="search = $event"
+    />
 
-      <button
-        class="hidden btn-primary join-item rounded-r-full"
-        @click.prevent="handleSearch(search)"
-      >
-        <IconSearch :class="`h-6 w-6`" />
-        Search
-      </button>
-    </form>
-  </div>
+    <button
+      class="hidden btn-primary join-item rounded-r-full"
+      @click.prevent="handleSearch(search)"
+    >
+      <IconSearch :class="`h-6 w-6`" />
+      Search
+    </button>
+  </form>
 </template>

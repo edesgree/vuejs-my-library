@@ -13,7 +13,7 @@ defineProps({
   <div class="bookmark-action">
     <div v-if="type == 'search'">
       <button
-        v-if="!movie.inWatchlist"
+        v-if="!store.isInWatchlist(movie)"
         class="btn btn-ghost btn-sm btn-bookmark"
         @click.prevent="store.addToWatchlist(movie)"
       >

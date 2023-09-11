@@ -53,7 +53,7 @@ const runtime = computed(() => movie.value.runtime + ' min')
       class="card card-side bg-base-100 shadow-xl"
       :style="{ backgroundImage: `url(${store.posterURL + movie.backdrop_path})` }"
     >
-      <figure>
+      <figure class="items-start">
         <MovieImage :path="movie.poster_path" :title="movie.title" />
       </figure>
       <div class="card-body">

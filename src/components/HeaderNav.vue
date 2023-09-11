@@ -9,14 +9,14 @@ import { RouterLink } from 'vue-router'
 </script>
 <template>
   <header class="bg-base-200">
-    <div class="navbar">
+    <div class="navbar items-stretch flex flex-col sm:flex-row">
       <div class="logo-wrap">
         <RouterLink class="btn btn-dark normal-case text-xl" aria-label="homepage" to="/">
           <IconBookmark2 /> <span>My Library<span class="text-primary">.</span></span>
         </RouterLink>
       </div>
       <SearchForm />
-      <ul class="menu items-center lg:menu-horizontal rounded-box">
+      <ul class="menu justify-center sm:justify-start lg:menu-horizontal rounded-box">
         <li>
           <RouterLink aria-label="homepage" to="/">
             <IconHome />

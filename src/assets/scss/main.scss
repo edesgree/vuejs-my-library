@@ -26,10 +26,14 @@ body  {
     .navbar{
       gap:10px;
       .logo-wrap{
-        align-items: flex-start;
+        align-items: center;
         display: flex;
         flex:1;
         flex-direction: column;
+        justify-content: center;
+        @include mobileUp{
+          align-items: flex-start;
+        }
         .subtitle{
           margin-left: 60px;
         }
@@ -81,10 +85,12 @@ body  {
     
   }
   .search-form{
-    align-items: center;
+    align-items: stretch;
     display: flex;
     gap: 0;
+    justify-content: center;
     margin-bottom: 0;
+    padding: 0 1rem;
     .input-wrapper{
       label{
         display: none;
@@ -254,14 +260,18 @@ body  {
  
   .movie-detailed-view{
     .card{
+      border-radius: $border-radius;
       flex-direction: column;
+      overflow: hidden;
       @include mobileUp{
         flex-direction: row;
       }
     }
     figure{
+      align-items: start;
       min-width: 200px;
       padding-left: var(--padding-card, 2rem);
+      padding-top: var(--padding-card, 2rem);
     }
   
   }
