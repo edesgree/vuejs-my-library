@@ -12,7 +12,6 @@ defineProps({
 <template>
   <div class="bookmark-action">
     <div v-if="type == 'search'">
-      <p v-if="movie.inWatchlist">in watch list</p>
       <button
         v-if="!movie.inWatchlist"
         class="btn btn-ghost btn-sm btn-bookmark"

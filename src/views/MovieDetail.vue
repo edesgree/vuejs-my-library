@@ -10,6 +10,7 @@ const route = useRoute()
 const movieId = ref(route.params.id)
 const movie = ref(null)
 const error = ref(null)
+//const inWatchlist = ref(false) // Define inWatchlist as a ref
 
 onMounted(async () => {
   // Fetch movie details using the movie ID from the route
@@ -25,7 +26,8 @@ onMounted(async () => {
       // Set the movie data
       movie.value = {
         ...movieData,
-        inWatchlist: store.isInWatchlist(movieData) // Set inWatchlist as a ref here
+        inWatchlist: store.isInWatchlist(movieData), // Set inWatchlist as a ref here
+        isWatched: store.isWatched(movieData) // Set isWatched as a ref here
       }
 
       console.log('le movie', movie.value)
@@ -78,10 +80,8 @@ const runtime = computed(() => movie.value.runtime + ' min')
         <p>{{ movie.overview }}</p>
 
         <div class="card-actions justify-end md:!justify-center join">
-          <p v-if="store.inWatchlist">This movie is in your watchlist</p>
-          <p v-else>This movie is not in your watchlist</p>
           <button
-            v-if="!store.inWatchlist"
+            v-if="!store.isInWatchlist(movie)"
             @click.prevent="store.addToWatchlist(movie)"
             class="join-item btn btn-sm btn-primary"
           >
@@ -92,17 +92,25 @@ const runtime = computed(() => movie.value.runtime + ' min')
             @click.prevent="store.removeFromWatchlist(movie)"
             class="join-item btn btn-sm btn-secondary"
           >
-            ❌ Remove from my list
+            ❌ Remove
           </button>
+        </div>
+        <template v-if="store.isInWatchlist(movie)">
           <button
-            v-if="store.inWatchlist"
             @click.prevent="store.markAsWatched(movie)"
             class="join-item btn btn-sm btn-secondary"
           >
+            ee3
             <template v-if="movie.isWatched">👀 Mark as not watched yet</template>
             <template v-else>👀 Mark as watched</template>
           </button>
-        </div>
+          <div class="form-control join-item">
+            <label class="label cursor-pointer">
+              <span class="label-text">Movie watched</span>
+              <input type="checkbox" class="toggle" v-model="w" />
+            </label>
+          </div>
+        </template>
       </div>
     </div>
   </div>
