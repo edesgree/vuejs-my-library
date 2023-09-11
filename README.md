@@ -3,7 +3,7 @@
 The project is to build a small app to keep a list of movies i want to watch.
 It is bootstraped with Vite.js.
 
-🔗 **Live preview:** [here](https://jolly-madeleine-93d3fe.netlify.app/)
+🔗 **Live preview:** [here](https://monumental-blini-0cf39d.netlify.app)
 
 ### Screenshot
 
